@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #f8fafc; /* Light Mode bg */
+    --foreground: #020617; /* Light Mode text */
+    --primary: #ef4444; /* Arterial Crimson */
+    --secondary: #10b981; /* Clinical Emerald */
+    --accent: #334155;
+  }
+  
+  .dark {
+    --background: #020617; /* Deep charcoal/black */
+    --foreground: #f8fafc; /* High contrast white */
+    --primary: #ef4444; /* Arterial Crimson */
+    --secondary: #10b981; /* Clinical Emerald */
+    --accent: #cbd5e1;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Custom Utilities for scrollytelling */
+@layer utilities {
+  .clip-path-polygon {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
