@@ -3,25 +3,32 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { name: "Diagnostic Baseline", href: "#scene-hero" },
-  { name: "Visualizing Pathology", href: "#scene-inside" },
-  { name: "Endovascular Mastery", href: "#scene-procedure" },
-  { name: "Secure Consultation", href: "#scene-consultation" },
+  { name: "Home", href: "/" },
+  { name: "Diagnostic Baseline", href: "/experience#scene-hero" },
+  { name: "Visualizing Pathology", href: "/experience#scene-inside" },
+  { name: "Endovascular Mastery", href: "/experience#scene-procedure" },
+  { name: "Secure Consultation", href: "/experience#scene-consultation" },
 ];
 
 export function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const onLight = usePathname() === "/";
+
+  const trigger = onLight
+    ? "bg-white/90 border-slate-200 text-slate-700 hover:bg-slate-50"
+    : "bg-background/80 border-foreground/10 text-foreground hover:bg-foreground/10";
 
   return (
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-[52px] right-4 z-[70] p-3 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 text-foreground hover:bg-foreground/10 transition-colors shadow-lg cursor-pointer"
+        className={`fixed top-[52px] right-4 z-[70] p-3 rounded-full backdrop-blur-md border shadow-lg transition-colors cursor-pointer ${trigger}`}
         aria-label="Toggle menu"
         aria-expanded={isOpen}
-      >  <Menu className="w-5 h-5 text-foreground" />
+      >  <Menu className="w-5 h-5" />
       </button>
 
       <AnimatePresence>

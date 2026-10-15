@@ -1,12 +1,4 @@
-import { HeroScene } from "@/components/scenes/HeroScene";
-import { InsideScene } from "@/components/scenes/InsideScene";
-import { ProcedureScene } from "@/components/scenes/ProcedureScene";
-import { ConsultationScene } from "@/components/scenes/ConsultationScene";
-import { ScrollPrompt } from "@/components/ScrollPrompt";
-import { Biography } from "@/components/sections/Biography";
-import { FieldsOfPractice } from "@/components/sections/FieldsOfPractice";
-import { FAQSection } from "@/components/sections/FAQSection";
-import { LocateUs } from "@/components/sections/LocateUs";
+import { LandingHero } from "@/components/landing/LandingHero";
 import { SITE_URL, locations, practice } from "@/lib/practice";
 
 // Structured data so Google/AI understand the practice and each consulting site.
@@ -43,7 +35,7 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <main className="relative w-full bg-background selection:bg-primary/30">
+    <main className="relative w-full overflow-hidden bg-background selection:bg-primary/30">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -51,8 +43,7 @@ export default function Home() {
         }}
       />
 
-      {/* Crawlable summary. The scenes render as canvas images, so this gives
-          search engines and screen readers real, indexable text. */}
+      {/* Crawlable summary for search engines and screen readers. */}
       <section className="sr-only">
         <h1>Dr. Zuko Booi — Vascular Surgeon in Johannesburg</h1>
         <p>
@@ -64,15 +55,7 @@ export default function Home() {
         </p>
       </section>
 
-      <ScrollPrompt />
-      <HeroScene />
-      <InsideScene />
-      <ProcedureScene />
-      <Biography />
-      <FieldsOfPractice />
-      <FAQSection />
-      <LocateUs />
-      <ConsultationScene />
+      <LandingHero />
     </main>
   );
 }
